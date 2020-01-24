@@ -1,0 +1,60 @@
+@mixin btn {
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  outline: none;
+  padding: 0 25px;
+  height: 40px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 2px;
+  cursor: pointer;
+
+  > :global(i.fa) {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  > :global(i.fa.icon-right) {
+    font-size: 14px;
+    margin-right: 0;
+    margin-left: 5px;
+  }
+
+  &[disabled] {
+    cursor: default;
+  }
+}
+
+.accent {
+  @include btn;
+  color: #fff;
+  background-color: #ee6123;
+  border: 1px solid #ee6123;
+
+  &:hover:not([disabled]) {
+    background-color: #ee7420;
+    border: 1px solid #ee7420;
+  }
+
+  &[disabled] {
+    background-color: #eea474;
+    border: 1px solid #eea474;
+  }
+}
+
+.content {
+  position: relative;
+}
+
+.contentOriginal {
+  opacity: 0;
+}
+
+.loader {
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}

@@ -1,0 +1,62 @@
+.links {
+  background-color: #F5F5F7;
+  height: 100%;
+  overflow: auto;
+}
+
+.header {
+  font-size: 13px;
+  color: #828387;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.header .info2 {
+  margin-left: auto;
+}
+
+.item {
+  border-top: 1px solid #d3d4d7;
+  padding: 20px 25px;
+  position: relative;
+  cursor: pointer;
+
+  &.active {
+    background-color: #fff;
+  }
+
+  .date {
+    font-size: 12px;
+    color: #828387;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .url {
+    font-size: 16px;
+    color: #36383b;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sid {
+    font-size: 11px;
+    color: #ee6123;
+  }
+
+  .clicks {
+    font-size: 12px;
+    color: #828387;
+    position: absolute;
+    right: 25px;
+    bottom: 20px;
+
+    .total {
+      margin-right: 3px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# compiled output
+web/build
+
+# env
+**/.env
+
+# dependencies
+**/node_modules
+
+# IDEs and editors
+**/.idea
+
+# System Files
+.DS_Store
+Thumbs.db
+.npmrc
