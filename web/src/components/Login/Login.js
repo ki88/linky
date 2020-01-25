@@ -7,7 +7,7 @@ import { Button } from '../controls/Button/Button';
 import s from './Login.module.scss';
 
 export const Login = () => {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState('demo');
   const [success, setSuccess] = useState(false);
   const [inProgress, setInProgress] = useState(false);
   const onSubmit = async () => {
