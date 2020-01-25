@@ -12,7 +12,7 @@ export const links = [
         'www.neueda.com': 1
       }
     },
-    url: 'https://www.google.com/?q=beer',
+    url: 'https://www.google.com/?q=beer+snacks',
     sid: 'kDumUaKG',
     user: 'ilya',
     created: 1579849631
