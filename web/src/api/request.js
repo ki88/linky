@@ -7,7 +7,7 @@ const request = async (data) => {
   try {
     const resp = await axios({
       ...data,
-      url: `${baseUrl}/${data.url}`,
+      url: `${baseUrl}/api/${data.url}`,
       headers: {
         Authorization: auth.token
       }

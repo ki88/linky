@@ -7,6 +7,25 @@ import {Stats} from './Stats/Stats';
 import {Items} from './Items/Items';
 import s from './Dashboard.module.scss';
 
+export const DashboardDumb = ({links, activeLink, onDetails, onCreate}) => (
+  <div className={s.dashboard}>
+    <div className={s.top}>
+      <Navbar onCreate={onCreate} />
+      <Stats links={links} />
+    </div>
+    <div className={s.bottom}>
+      <div className={s.links}>
+        <Items links={links} activeLink={activeLink} onDetails={onDetails} />
+      </div>
+      <div className={s.details}>
+        {activeLink &&
+        <Details link={activeLink} />
+        }
+      </div>
+    </div>
+  </div>
+);
+
 export const Dashboard = ({match, history}) => {
   const sid = match.params.sid;
 
@@ -46,21 +65,11 @@ export const Dashboard = ({match, history}) => {
   };
 
   return (
-    <div className={s.dashboard}>
-      <div className={s.top}>
-        <Navbar onCreate={onCreate} />
-        <Stats links={links} />
-      </div>
-      <div className={s.bottom}>
-        <div className={s.links}>
-          <Items links={links} activeLink={activeLink} onDetails={onDetails} />
-        </div>
-        <div className={s.details}>
-          {activeLink &&
-          <Details link={activeLink} />
-          }
-        </div>
-      </div>
-    </div>
+    <DashboardDumb
+      links={links}
+      activeLink={activeLink}
+      onCreate={onCreate}
+      onDetails={onDetails}
+    />
   )
 };
