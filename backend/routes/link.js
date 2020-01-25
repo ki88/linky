@@ -8,39 +8,48 @@ import generateSid from '../utils/generateSid';
 function linkRouter() {
   const router = express.Router();
 
-  router.get('/', handleErr(async (req, res) => {
-    const links = await linkDal.find({user: req.user});
+  router.get(
+    '/',
+    handleErr(async (req, res) => {
+      const links = await linkDal.find({ user: req.user });
 
-    res.send(links);
-  }));
+      res.send(links);
+    })
+  );
 
-  router.get('/:sid/stats', handleErr(async (req, res) => {
-    const stat = await statDal.findOne({sid: req.params.sid});
+  router.get(
+    '/:sid/stats',
+    handleErr(async (req, res) => {
+      const stat = await statDal.findOne({ sid: req.params.sid });
 
-    if (!stat) {
-      res.send([]);
-      return;
-    }
-
-    res.send(stat.clicks);
-  }));
-
-  router.post('/', handleErr(async (req, res) => {
-    const {url} = req.body;
-    const linkData = {
-      url: url.trim(),
-      sid: generateSid(),
-      user: req.user,
-      created: moment().unix(),
-      stats: {
-        total: 0,
-        byCountry: {},
-        byReferrer: {}
+      if (!stat) {
+        res.send([]);
+        return;
       }
-    };
-    const link = await linkDal.create(linkData);
-    res.send(link);
-  }));
+
+      res.send(stat.clicks);
+    })
+  );
+
+  router.post(
+    '/',
+    handleErr(async (req, res) => {
+      const { url } = req.body;
+      const linkData = {
+        url: url.trim(),
+        sid: generateSid(),
+        user: req.user,
+        created: moment().unix(),
+        stats: {
+          total: 0,
+          byCountry: {},
+          byReferrer: {}
+        }
+      };
+      const link = await linkDal.create(linkData);
+      res.send(link);
+    })
+  );
 
   return router;
 }

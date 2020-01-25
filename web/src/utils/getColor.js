@@ -1,12 +1,6 @@
-import {changeHue} from './changeHue';
+import { changeHue } from './changeHue';
 
-const colors = [
-  '#CFA3F0',
-  '#68CEDD',
-  '#F7939B',
-  '#5CAEED',
-  '#5F83A2'
-];
+const colors = ['#CFA3F0', '#68CEDD', '#F7939B', '#5CAEED', '#5F83A2'];
 
 const cache = {};
 

@@ -1,10 +1,10 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
-import {Chart} from 'chart.js';
-import {getColor} from '../../../../utils/getColor';
+import { Chart } from 'chart.js';
+import { getColor } from '../../../../utils/getColor';
 import s from './PieChart.module.scss';
 
-export const PieChart = ({data, title}) => {
+export const PieChart = ({ data, title }) => {
   const canvasRef = useRef();
 
   const configRef = useRef({
@@ -28,11 +28,13 @@ export const PieChart = ({data, title}) => {
   useEffect(() => {
     const keys = Object.keys(data);
     configRef.current.data = {
-      datasets: [{
-        data: keys.map(key => data[key]),
-        backgroundColor: keys.map((key, index) => getColor(index, key)),
-        label: ''
-      }],
+      datasets: [
+        {
+          data: keys.map(key => data[key]),
+          backgroundColor: keys.map((key, index) => getColor(index, key)),
+          label: ''
+        }
+      ],
       labels: keys.map(key => `${key} - ${data[key]}`)
     };
     chartRef.current.update();
@@ -45,5 +47,5 @@ export const PieChart = ({data, title}) => {
       <div className={s.title}>{title}</div>
       <canvas ref={canvasRef} />
     </div>
-  )
+  );
 };

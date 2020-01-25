@@ -8,7 +8,9 @@ export function calcStats(links) {
     });
     return res;
   }, {});
-  const topCountry = Object.keys(byCountry).sort((a, b) => byCountry[b] - byCountry[a])[0];
+  const topCountry = Object.keys(byCountry).sort(
+    (a, b) => byCountry[b] - byCountry[a]
+  )[0];
 
   const byReferrer = links.reduce((res, link) => {
     Object.keys(link.stats.byReferrer).forEach(code => {
@@ -17,7 +19,9 @@ export function calcStats(links) {
     });
     return res;
   }, {});
-  const topReferrer = Object.keys(byReferrer).sort((a, b) => byReferrer[b] - byReferrer[a])[0];
+  const topReferrer = Object.keys(byReferrer).sort(
+    (a, b) => byReferrer[b] - byReferrer[a]
+  )[0];
 
   return {
     total,
@@ -29,5 +33,5 @@ export function calcStats(links) {
       name: topReferrer,
       clicks: byReferrer[topReferrer]
     }
-  }
+  };
 }

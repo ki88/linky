@@ -33,7 +33,9 @@ const auth = {
     if (!token) {
       return null;
     }
-    const {user: {tokeetToken, ...user}} = jwt.decode(token);
+    const {
+      user: { tokeetToken, ...user }
+    } = jwt.decode(token);
     return user;
   }
 };

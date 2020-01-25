@@ -1,8 +1,8 @@
-import React, {useMemo} from 'react';
+import React, { useMemo } from 'react';
 import s from './Stats.module.scss';
-import {calcStats} from './calcStats';
+import { calcStats } from './calcStats';
 
-export const Stats = ({links}) => {
+export const Stats = ({ links }) => {
   const stats = useMemo(() => calcStats(links), [links]);
 
   return (
@@ -15,15 +15,9 @@ export const Stats = ({links}) => {
             </div>
           </div>
           <div className={s.right}>
-            <div className={s.value}>
-              {stats.total}
-            </div>
-            <div className={s.title}>
-              Total
-            </div>
-            <div className={s.description}>
-              Total Clicks
-            </div>
+            <div className={s.value}>{stats.total}</div>
+            <div className={s.title}>Total</div>
+            <div className={s.description}>Total Clicks</div>
           </div>
         </div>
         <div className={s.item}>
@@ -33,15 +27,13 @@ export const Stats = ({links}) => {
             </div>
           </div>
           <div className={s.right}>
-            <div className={s.value}>
-              {stats.referrer.clicks}
-            </div>
+            <div className={s.value}>{stats.referrer.clicks}</div>
             <div className={s.title}>
-              {stats.referrer.name === 'direct' ? 'Email, SMS, Direct' : stats.referrer.name}
+              {stats.referrer.name === 'direct'
+                ? 'Email, SMS, Direct'
+                : stats.referrer.name}
             </div>
-            <div className={s.description}>
-              Top Referrer
-            </div>
+            <div className={s.description}>Top Referrer</div>
           </div>
         </div>
         <div className={s.item}>
@@ -51,18 +43,12 @@ export const Stats = ({links}) => {
             </div>
           </div>
           <div className={s.right}>
-            <div className={s.value}>
-              {stats.country.clicks}
-            </div>
-            <div className={s.title}>
-              {stats.country.code}
-            </div>
-            <div className={s.description}>
-              Top Location
-            </div>
+            <div className={s.value}>{stats.country.clicks}</div>
+            <div className={s.title}>{stats.country.code}</div>
+            <div className={s.description}>Top Location</div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 };

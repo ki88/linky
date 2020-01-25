@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {render, cleanup, fireEvent} from '@testing-library/react';
-import {links} from '../../../mockData/links';
-import {Items} from './Items';
+import { render, cleanup, fireEvent } from '@testing-library/react';
+import { links } from '../../../mockData/links';
+import { Items } from './Items';
 
 describe('Items', () => {
   afterEach(cleanup);
@@ -9,10 +9,10 @@ describe('Items', () => {
   const mockClick = jest.fn();
 
   const renderComponent = () =>
-    render(<Items links={links} activeLink={links[0]} onDetails={mockClick}/>);
+    render(<Items links={links} activeLink={links[0]} onDetails={mockClick} />);
 
   it('should call onDetails', async () => {
-    const {getByTestId} = renderComponent();
+    const { getByTestId } = renderComponent();
     fireEvent.click(getByTestId(`item-${links[1].sid}`));
     expect(mockClick).toHaveBeenCalled();
   });

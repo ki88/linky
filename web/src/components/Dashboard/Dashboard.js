@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {Details} from './Details/Details';
-import {linkApi} from '../../api/link';
-import {createLink} from '../Create/createLink';
-import {Navbar} from './Navbar/Navbar';
-import {Stats} from './Stats/Stats';
-import {Items} from './Items/Items';
+import React, { useEffect, useState } from 'react';
+import { Details } from './Details/Details';
+import { linkApi } from '../../api/link';
+import { createLink } from '../Create/createLink';
+import { Navbar } from './Navbar/Navbar';
+import { Stats } from './Stats/Stats';
+import { Items } from './Items/Items';
 import s from './Dashboard.module.scss';
 
-export const DashboardDumb = ({links, activeLink, onDetails, onCreate}) => (
+export const DashboardDumb = ({ links, activeLink, onDetails, onCreate }) => (
   <div className={s.dashboard}>
     <div className={s.top}>
       <Navbar onCreate={onCreate} />
@@ -18,15 +18,13 @@ export const DashboardDumb = ({links, activeLink, onDetails, onCreate}) => (
         <Items links={links} activeLink={activeLink} onDetails={onDetails} />
       </div>
       <div className={s.details}>
-        {activeLink &&
-        <Details link={activeLink} />
-        }
+        {activeLink && <Details link={activeLink} />}
       </div>
     </div>
   </div>
 );
 
-export const Dashboard = ({match, history}) => {
+export const Dashboard = ({ match, history }) => {
   const sid = match.params.sid;
 
   const [links, setLinks] = useState([]);
@@ -49,7 +47,7 @@ export const Dashboard = ({match, history}) => {
     }
   }, []);
 
-  const onDetails = (link) => {
+  const onDetails = link => {
     history.push('/links/' + link.sid);
     setActiveLink(link);
   };
@@ -71,5 +69,5 @@ export const Dashboard = ({match, history}) => {
       onCreate={onCreate}
       onDetails={onDetails}
     />
-  )
+  );
 };

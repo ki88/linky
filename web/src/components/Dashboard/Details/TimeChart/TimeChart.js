@@ -1,9 +1,9 @@
-import React, {useEffect, useRef} from 'react';
-import {Chart} from 'chart.js';
-import {generateChartConfig} from './generateChartConfig';
-import {generateData} from './generateData';
+import React, { useEffect, useRef } from 'react';
+import { Chart } from 'chart.js';
+import { generateChartConfig } from './generateChartConfig';
+import { generateData } from './generateData';
 
-export const TimeChart = ({data}) => {
+export const TimeChart = ({ data }) => {
   const canvasRef = useRef();
 
   const configRef = useRef(generateChartConfig());
@@ -21,8 +21,8 @@ export const TimeChart = ({data}) => {
   }, [data]);
 
   return (
-    <div style={{height: 200, marginLeft: -25}}>
+    <div style={{ height: 200, marginLeft: -25 }}>
       <canvas ref={canvasRef} />
     </div>
-  )
+  );
 };

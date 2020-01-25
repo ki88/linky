@@ -1,7 +1,7 @@
-import {Stat} from '../models/stat';
+import { Stat } from '../models/stat';
 
 const statDal = {
-  findOne: async (search) => {
+  findOne: async search => {
     const stat = await Stat.findOne(search);
     if (!stat) {
       return null;
@@ -10,16 +10,20 @@ const statDal = {
   },
 
   logClick: async (sid, item) => {
-    await Stat.update({
-      sid
-    },  {
-      $push: {
-        clicks: item
+    await Stat.update(
+      {
+        sid
+      },
+      {
+        $push: {
+          clicks: item
+        }
+      },
+      {
+        upsert: true,
+        setDefaultsOnInsert: true
       }
-    }, {
-      upsert: true,
-      setDefaultsOnInsert: true
-    });
+    );
   }
 };
 

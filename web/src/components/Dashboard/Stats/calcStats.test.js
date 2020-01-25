@@ -1,4 +1,4 @@
-import {calcStats} from './calcStats';
+import { calcStats } from './calcStats';
 
 const links = [
   {

@@ -3,7 +3,7 @@ import auth from '../services/auth';
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-const request = async (data) => {
+const request = async data => {
   try {
     const resp = await axios({
       ...data,

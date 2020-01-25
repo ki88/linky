@@ -1,20 +1,23 @@
 import mongoose from 'mongoose';
 
-const statSchema = new mongoose.Schema({
-  sid: {
-    type: String,
-    required: true
+const statSchema = new mongoose.Schema(
+  {
+    sid: {
+      type: String,
+      required: true
+    },
+    clicks: {
+      type: [
+        {
+          time: Number,
+          referrer: String,
+          country: String
+        }
+      ]
+    }
   },
-  clicks: {
-    type: [
-      {
-        time: Number,
-        referrer: String,
-        country: String
-      }
-    ]
-  }
-}, { minimize: false });
+  { minimize: false }
+);
 
 statSchema.methods.toJSON = function() {
   const obj = this.toObject();

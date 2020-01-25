@@ -10,8 +10,5 @@ export function generateData(stat) {
     t: +moment.unix(item.time),
     y: 1
   }));
-  return [
-    ...defaultData,
-    ...data
-  ];
+  return [...defaultData, ...data];
 }

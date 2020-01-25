@@ -5,7 +5,7 @@ import s from './Items.module.scss';
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-export const Items = ({links, activeLink, onDetails}) => {
+export const Items = ({ links, activeLink, onDetails }) => {
   return (
     <div className={s.links}>
       <div className={s.header}>
@@ -14,22 +14,26 @@ export const Items = ({links, activeLink, onDetails}) => {
       </div>
       <div className={s.linksList}>
         {links.map((link, index) => (
-          <div key={index} className={classNames(s.item, link === activeLink && s.active)} onClick={() => onDetails(link)} data-testid={`item-${link.sid}`}>
+          <div
+            key={index}
+            className={classNames(s.item, link === activeLink && s.active)}
+            onClick={() => onDetails(link)}
+            data-testid={`item-${link.sid}`}
+          >
             <div className={s.date}>
               {moment.unix(link.created).format('MMM D, YYYY')}
             </div>
-            <div className={s.url}>
-              {link.url}
-            </div>
+            <div className={s.url}>{link.url}</div>
             <div className={s.sid}>
               {baseUrl}/{link.sid}
             </div>
             <div className={s.clicks}>
-              <span className={s.total}>{link.stats.total}</span> <i className={'fal fa-chart-bar'} />
+              <span className={s.total}>{link.stats.total}</span>{' '}
+              <i className={'fal fa-chart-bar'} />
             </div>
           </div>
         ))}
       </div>
     </div>
-  )
+  );
 };

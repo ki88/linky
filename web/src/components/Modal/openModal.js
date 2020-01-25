@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Modal} from './Modal/Modal';
+import { Modal } from './Modal/Modal';
 
 export const openModal = (Component, data, options) => {
   const host = document.createElement('div');
@@ -18,12 +18,21 @@ export const openModal = (Component, data, options) => {
 
   const onClose = value => {
     destroy();
-    resolve({value});
+    resolve({ value });
   };
 
-  ReactDOM.render(<Modal Component={Component} data={data} onClose={onClose} onDismiss={onDismiss} {...options} />, host);
+  ReactDOM.render(
+    <Modal
+      Component={Component}
+      data={data}
+      onClose={onClose}
+      onDismiss={onDismiss}
+      {...options}
+    />,
+    host
+  );
 
   let resolve;
 
-  return new Promise(resolveFn => resolve = resolveFn);
+  return new Promise(resolveFn => (resolve = resolveFn));
 };

@@ -7,7 +7,7 @@ import getReferrer from '../utils/getReferrer';
 async function redirect(req, res) {
   const sid = req.params.sid;
 
-  const link = await linkDal.findOne({sid});
+  const link = await linkDal.findOne({ sid });
 
   if (!link) {
     res.status(404).send('Not found');
