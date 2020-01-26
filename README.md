@@ -45,7 +45,7 @@ Starts Storybook on a random open port in dev-mode.
 #### `npm run snapshot`
 
 Snapshot testing. This will run Storybook's build-storybook command to create a static site from your storybook, 
-and will upload your stories to Percy to generate screenshots from them.
+and will upload your stories to [Percy](https://percy.io/) to generate screenshots from them.
 
 Note: Perci app token should be provided first in environment e.g. `export PERCY_TOKEN=<your token here>`
 
