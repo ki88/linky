@@ -4,6 +4,7 @@ import handleErr from '../utils/handleErr';
 import linkDal from '../services/linkDal';
 import statDal from '../services/statDal';
 import generateSid from '../utils/generateSid';
+import isURL from '../utils/isURL';
 
 function linkRouter() {
   const router = express.Router();
@@ -35,6 +36,12 @@ function linkRouter() {
     '/',
     handleErr(async (req, res) => {
       const { url } = req.body;
+
+      if (!isURL(url)) {
+        res.status(400).send({ code: 'INVALID_URL' });
+        return;
+      }
+
       const linkData = {
         url: url.trim(),
         sid: generateSid(),

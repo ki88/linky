@@ -4,6 +4,7 @@ import { ModalBody, ModalFooter, ModalHeader } from '../Modal/Modal/Modal';
 import { Button } from '../controls/Button/Button';
 import { TextInput } from '../controls/TextInput/TextInput';
 import s from './Create.module.scss';
+import { showErrorAlert } from '../ErrorAlert/showErrorAlert';
 
 export const CreateDumb = ({ onDismiss, onCreate }) => {
   const [value, setValue] = useState('');
@@ -34,8 +35,14 @@ export const CreateDumb = ({ onDismiss, onCreate }) => {
 
 export const Create = ({ onDismiss, onClose }) => {
   const onCreate = async value => {
-    const link = await linkApi.create(value);
-    onClose(link);
+    try {
+      const link = await linkApi.create(value);
+      onClose(link);
+    } catch (e) {
+      if (e.code) {
+        showErrorAlert(e.code);
+      }
+    }
   };
 
   return <CreateDumb onDismiss={onDismiss} onCreate={onCreate} />;
