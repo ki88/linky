@@ -35,7 +35,7 @@ function linkRouter() {
   router.post(
     '/',
     handleErr(async (req, res) => {
-      const { url } = req.body;
+      const url = req.body.url.trim();
 
       if (!isURL(url)) {
         res.status(400).send({ code: 'INVALID_URL' });
