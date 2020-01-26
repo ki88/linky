@@ -1,7 +1,7 @@
 ## Linky
 
 ### About
-Linky is a URL shortening service and a link management application. Linky uses HTTP 301 
+Linky is an URL shortening service and a link management application. Linky uses HTTP 301 
 redirects for its links. The shortcuts are intended to be permanent and cannot be changed 
 once they are created. Application provides comprehensive metrics on every link — like 
 clicks, geographic data, and top referring channels.
