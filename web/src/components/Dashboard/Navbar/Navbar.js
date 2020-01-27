@@ -1,12 +1,13 @@
-import React from 'react';
-import classNames from 'classnames';
+import React, { useState } from 'react';
 import { Button } from '../../controls/Button/Button';
 import s from './Navbar.module.scss';
 import auth from '../../../services/auth';
+import { Dropdown } from '../../controls/Dropdown/Dropdown';
 
 export const Navbar = ({ onCreate }) => {
+  const [showDD, setShowDd] = useState(false);
+
   const onLogOut = () => {
-    console.log('++');
     auth.logOut();
     window.location.href = '/login';
   };
@@ -14,20 +15,30 @@ export const Navbar = ({ onCreate }) => {
   return (
     <div className={s.navbar}>
       <img className={s.logo} src={'/logo.png'} alt={''} />
-      <Button className={s.btnCreate} look={'accent'} onClick={onCreate}>
+      <Button
+        className={s.btnCreate}
+        look={'accent'}
+        onClick={onCreate}
+        onFocus={() => setShowDd(true)}
+        onBlur={() => setShowDd(false)}
+      >
         Create
       </Button>
-      <span className={s.dd}>
-        <button className={s.ddToggle}>
-          <i className={'fa fa-bars'} />
-        </button>
-        <div className={s.ddMenu}>
-          <div className={s.userName}>{auth.user}</div>
-          <Button className={s.btnLogOut} look={'accent'} onClick={onLogOut}>
-            Log Out
-          </Button>
-        </div>
-      </span>
+      <Dropdown
+        Toggle={
+          <button className={s.ddToggle}>
+            <i className={'fa fa-bars'} />
+          </button>
+        }
+        Menu={
+          <div className={s.ddMenu}>
+            <div className={s.userName}>{auth.user}</div>
+            <Button className={s.btnLogOut} look={'accent'} onClick={onLogOut}>
+              Log Out
+            </Button>
+          </div>
+        }
+      />
     </div>
   );
 };

@@ -25,7 +25,6 @@
   position: absolute;
   right: 0;
   top: 57px;
-  display: none;
 }
 
 .userName {
@@ -33,11 +32,6 @@
   color: #fff;
   text-transform: uppercase;
   margin-bottom: 20px;
-}
-
-.ddToggle:focus + .ddMenu,
-.ddToggle + .ddMenu:hover {
-  display: block;
 }
 
 .ddToggle {
