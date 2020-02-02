@@ -33,6 +33,10 @@ For both `web` and `backend` folders:
 
 Launches the test runner in the interactive watch mode.
 
+#### `npm run e2e`
+
+Runs e2e tests with [Puppeteer](https://pptr.dev/)
+
 #### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
