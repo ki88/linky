@@ -27,7 +27,7 @@ export const Login = () => {
     return <Redirect to={{ pathname: '/' }} />;
   }
   return (
-    <div className={s.login}>
+    <div className={s.login} data-test-id={'loginComponent'}>
       <div className={s.logoHolder}>
         <img src={'/logo.png'} alt={''} />
       </div>
@@ -36,6 +36,7 @@ export const Login = () => {
           placeholder={'Type your nickname'}
           value={user}
           onChange={e => setUser(e.target.value)}
+          data-test-id={'nicknameInput'}
         />
       </div>
       <div>
@@ -45,6 +46,7 @@ export const Login = () => {
           loading={inProgress}
           disabled={!user}
           onClick={onSubmit}
+          data-test-id={'submit'}
         >
           Login
         </Button>
