@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '../../controls/Button/Button';
 import s from './Navbar.module.scss';
 import auth from '../../../services/auth';
 import { Dropdown } from '../../controls/Dropdown/Dropdown';
 
 export const Navbar = ({ onCreate }) => {
-  const [showDD, setShowDd] = useState(false);
-
   const onLogOut = () => {
     auth.logOut();
     window.location.href = '/login';
@@ -15,13 +13,7 @@ export const Navbar = ({ onCreate }) => {
   return (
     <div className={s.navbar}>
       <img className={s.logo} src={'/logo.png'} alt={''} />
-      <Button
-        className={s.btnCreate}
-        look={'accent'}
-        onClick={onCreate}
-        onFocus={() => setShowDd(true)}
-        onBlur={() => setShowDd(false)}
-      >
+      <Button className={s.btnCreate} look={'accent'} onClick={onCreate}>
         Create
       </Button>
       <Dropdown

@@ -42,3 +42,21 @@
     opacity: 0.5;
   }
 }
+
+@media (max-width: 767px) {
+  .item {
+    margin-right: 15px;
+
+    .icon {
+      font-size: 16px;
+      height: 25px;
+      width: 25px;
+    }
+
+    .value {
+      font-size: 18px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+  }
+}

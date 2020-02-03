@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { Details } from './Details/Details';
 import { linkApi } from '../../api/link';
 import { createLink } from '../Create/createLink';
@@ -7,22 +8,29 @@ import { Stats } from './Stats/Stats';
 import { Items } from './Items/Items';
 import s from './Dashboard.module.scss';
 
-export const DashboardDumb = ({ links, activeLink, onDetails, onCreate }) => (
-  <div className={s.dashboard}>
-    <div className={s.top}>
-      <Navbar onCreate={onCreate} />
-      <Stats links={links} />
-    </div>
-    <div className={s.bottom}>
-      <div className={s.links}>
-        <Items links={links} activeLink={activeLink} onDetails={onDetails} />
+export const DashboardDumb = ({ links, activeLink, onDetails, onCreate }) => {
+  const [opened, setOpened] = useState(false);
+
+  return (
+    <div className={s.dashboard}>
+      <div className={s.top}>
+        <Navbar onCreate={onCreate} />
+        <Stats links={links} />
       </div>
-      <div className={s.details}>
-        {activeLink && <Details link={activeLink} />}
+      <div className={s.bottom}>
+        <div className={classNames(s.links, opened && s.opened)}>
+          <Items links={links} activeLink={activeLink} onDetails={onDetails} />
+          <div className={s.sidebarToggle} onClick={() => setOpened(!opened)}>
+            <i className={`fa fa-arrow-${opened ? 'left' : 'right'}`} />
+          </div>
+        </div>
+        <div className={s.details}>
+          {activeLink && <Details link={activeLink} />}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Dashboard = ({ match, history }) => {
   const sid = match.params.sid;
