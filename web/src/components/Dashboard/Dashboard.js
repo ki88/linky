@@ -12,7 +12,7 @@ export const DashboardDumb = ({ links, activeLink, onDetails, onCreate }) => {
   const [opened, setOpened] = useState(false);
 
   return (
-    <div className={s.dashboard}>
+    <div className={s.dashboard} data-test-id={'dashboardComponent'}>
       <div className={s.top}>
         <Navbar onCreate={onCreate} />
         <Stats links={links} />
